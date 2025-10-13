@@ -81,6 +81,8 @@ or install in terminal:
 npm install baileys@github:dcodemaxz/baileys
 ```
 
+---
+
 ## 🚀 Quick Example
 
 ```ts
