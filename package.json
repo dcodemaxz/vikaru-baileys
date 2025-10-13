@@ -1,5 +1,5 @@
 {
-  "name": "vikaru-baileys",
+  "name": "@dcodemaxz/baileys",
   "version": "1.0.0",
   "description": "Custom Baileys WhatsApp API",
   "keywords": [
@@ -10,8 +10,7 @@
     "whatsapp-web",
     "whatsapp-bot",
     "automation",
-    "multi-device",
-    "vikaru-botz"
+    "multi-device"
   ],
   "homepage": "https://github.com/dcodemaxz/baileys",
   "repository": {
@@ -52,7 +51,7 @@
     "cache-manager": "^5.7.6",
     "cheerio": "^1.0.0-rc.10",
     "libphonenumber-js": "^1.10.20",
-    "libsignal": "npm:@itsukichan/libsignal-node",
+    "libsignal": "github:dcodemaxz/libsignal-node",
     "lodash": "^4.17.21",
     "music-metadata": "^7.12.3",
     "pino": "^9.6",
