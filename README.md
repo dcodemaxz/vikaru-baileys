@@ -1,4 +1,4 @@
-# <div align='center'>Baileys Modification</div>
+# <div align='center'>Baileys Modified | Beta test</div>
 
 <div align="center">
 
@@ -19,7 +19,7 @@
 
 This is a **custom Baileys build** by [dcodemaxz](https://github.com/dcodemaxz), based on [WhiskeySockets/Baileys](https://github.com/WhiskeySockets/Baileys).  
 This version includes several improvements, enhanced performance, and TypeScript compatibility.
-> Modified Baileys version maintained by **dcodemaxz**, focused on performance, new WhatsApp features, and stability.
+> 🔥 This Baileys is intended to support the [Vikaru-Botz](https://github.com/dcodemaxz/Vikaru-Bot) project
 
 ### ⚡ Thaks to
 - @whiskeysockets
