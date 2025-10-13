@@ -9,7 +9,7 @@
   </a>
 
   <a href="https://chat.whatsapp.com/GlNdk54lm9V7C4U54SXnh1">
-    <img src="https://img.shields.io/badge/WhatsApp-Channel-25D366?logo=whatsapp&logoColor=white" alt="WhatsApp Channel" />
+    <img src="https://img.shields.io/badge/WhatsApp-Comunity-25D366?logo=whatsapp&logoColor=white" alt="WhatsApp Comunity" />
   </a>
 
 </div>
@@ -19,6 +19,7 @@
 
 This is a **custom Baileys build** by [dcodemaxz](https://github.com/dcodemaxz), based on [WhiskeySockets/Baileys](https://github.com/WhiskeySockets/Baileys).  
 This version includes several improvements, enhanced performance, and TypeScript compatibility.
+
 > 🔥 This Baileys is intended to support the [Vikaru-Bot](https://github.com/dcodemaxz/Vikaru-Bot) project
 
 ### ⚡ Thaks to
