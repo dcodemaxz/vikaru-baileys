@@ -19,7 +19,7 @@
 
 This is a **custom Baileys build** by [dcodemaxz](https://github.com/dcodemaxz), based on [WhiskeySockets/Baileys](https://github.com/WhiskeySockets/Baileys).  
 This version includes several improvements, enhanced performance, and TypeScript compatibility.
-> 🔥 This Baileys is intended to support the [Vikaru-Botz](https://github.com/dcodemaxz/Vikaru-Bot) project
+> 🔥 This Baileys is intended to support the [Vikaru-Bot](https://github.com/dcodemaxz/Vikaru-Bot) project
 
 ### ⚡ Thaks to
 - @whiskeysockets
