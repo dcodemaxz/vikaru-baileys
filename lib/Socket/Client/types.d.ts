@@ -1,3 +1,4 @@
+// baileys by denzy
 import { EventEmitter } from 'events';
 import { URL } from 'url';
 import { SocketConfig } from '../../Types';

@@ -1,4 +1,6 @@
+/// <reference types="node" />
 import type { proto } from '../../WAProto';
+import { RegistrationOptions } from '../Socket/registration';
 import type { Contact } from './Contact';
 import type { MinimalMessage } from './Message';
 export type KeyPair = {
@@ -55,7 +57,12 @@ export type AuthenticationCreds = SignalCreds & {
     /** number of times history & app state has been synced */
     accountSyncCounter: number;
     accountSettings: AccountSettings;
+    deviceId: string;
+    phoneId: string;
+    identityId: Buffer;
     registered: boolean;
+    backupToken: Buffer;
+    registration: RegistrationOptions;
     pairingCode: string | undefined;
     lastPropHash: string | undefined;
     routingInfo: Buffer | undefined;

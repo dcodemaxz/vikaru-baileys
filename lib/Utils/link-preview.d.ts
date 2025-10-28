@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
-import { ILogger } from './logger';
+import { Logger } from 'pino';
 import { WAMediaUploadFunction, WAUrlInfo } from '../Types';
 export type URLGenerationOptions = {
     thumbnailWidth: number;
@@ -10,7 +10,7 @@ export type URLGenerationOptions = {
         headers?: AxiosRequestConfig<{}>['headers'];
     };
     uploadImage?: WAMediaUploadFunction;
-    logger?: ILogger;
+    logger?: Logger;
 };
 /**
  * Given a piece of text, checks for any URL present, generates link preview for the same and returns it

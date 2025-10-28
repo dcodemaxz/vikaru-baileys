@@ -1,6 +1,6 @@
 {
   "name": "@dcodemaxz/baileys",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Custom Baileys WhatsApp API",
   "keywords": [
     "baileys",
@@ -36,8 +36,8 @@
     "gen:protobuf": "sh WAProto/GenerateStatics.sh",
     "lint": "eslint src --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint src --fix --ext .js,.ts,.jsx,.tsx",
-    "prepack": "echo 'Baileys WhatsApp Library'",
-    "prepare": "echo 'Baileys WhatsApp Library'",
+    "prepack": "",
+    "prepare": "",
     "preinstall": "node ./engine-requirements.js",
     "release": "release-it",
     "test": "jest"
