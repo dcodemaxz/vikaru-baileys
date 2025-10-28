@@ -1,11 +1,11 @@
 import type KeyedDB from '@adiwajshing/keyed-db';
 import type { Comparable } from '@adiwajshing/keyed-db/lib/Types';
-import type { Logger } from 'pino';
 import { proto } from '../../WAProto';
 import type makeMDSocket from '../Socket';
 import type { BaileysEventEmitter, Chat, ConnectionState, Contact, GroupMetadata, PresenceData, WAMessage, WAMessageCursor, WAMessageKey } from '../Types';
 import { Label } from '../Types/Label';
 import { LabelAssociation } from '../Types/LabelAssociation';
+import { ILogger } from '../Utils/logger';
 import { ObjectRepository } from './object-repository';
 type WASocket = ReturnType<typeof makeMDSocket>;
 export declare const waChatKey: (pin: boolean) => {
@@ -17,7 +17,7 @@ export declare const waLabelAssociationKey: Comparable<LabelAssociation, string>
 export type BaileysInMemoryStoreConfig = {
     chatKey?: Comparable<Chat, string>;
     labelAssociationKey?: Comparable<LabelAssociation, string>;
-    logger?: Logger;
+    logger?: ILogger;
     socket?: WASocket;
 };
 declare const _default: (config: BaileysInMemoryStoreConfig) => {
@@ -27,16 +27,16 @@ declare const _default: (config: BaileysInMemoryStoreConfig) => {
     };
     messages: {
         [_: string]: {
-            array: proto.IWebMessageInfo[];
-            get: (id: string) => proto.IWebMessageInfo | undefined;
-            upsert: (item: proto.IWebMessageInfo, mode: "append" | "prepend") => void;
-            update: (item: proto.IWebMessageInfo) => boolean;
-            remove: (item: proto.IWebMessageInfo) => boolean;
-            updateAssign: (id: string, update: Partial<proto.IWebMessageInfo>) => boolean;
+            array: WAMessage[];
+            get: (id: string) => WAMessage | undefined;
+            upsert: (item: WAMessage, mode: "append" | "prepend") => void;
+            update: (item: WAMessage) => boolean;
+            remove: (item: WAMessage) => boolean;
+            updateAssign: (id: string, update: Partial<WAMessage>) => boolean;
             clear: () => void;
-            filter: (contain: (item: proto.IWebMessageInfo) => boolean) => void;
-            toJSON: () => proto.IWebMessageInfo[];
-            fromJSON: (newItems: proto.IWebMessageInfo[]) => void;
+            filter: (contain: (item: WAMessage) => boolean) => void;
+            toJSON: () => WAMessage[];
+            fromJSON: (newItems: WAMessage[]) => void;
         };
     };
     groupMetadata: {
@@ -52,7 +52,7 @@ declare const _default: (config: BaileysInMemoryStoreConfig) => {
     labelAssociations: KeyedDB<LabelAssociation, string>;
     bind: (ev: BaileysEventEmitter) => void;
     /** loads messages from the store, if not found -- uses the legacy connection */
-    loadMessages: (jid: string, count: number, cursor: WAMessageCursor) => Promise<proto.IWebMessageInfo[]>;
+    loadMessages: (jid: string, count: number, cursor: WAMessageCursor) => Promise<WAMessage[]>;
     /**
      * Get all available labels for profile
      *
@@ -72,8 +72,8 @@ declare const _default: (config: BaileysInMemoryStoreConfig) => {
      * @returns Label IDs
      **/
     getMessageLabels: (messageId: string) => string[];
-    loadMessage: (jid: string, id: string) => Promise<proto.IWebMessageInfo | undefined>;
-    mostRecentMessage: (jid: string) => Promise<proto.IWebMessageInfo>;
+    loadMessage: (jid: string, id: string) => Promise<WAMessage | undefined>;
+    mostRecentMessage: (jid: string) => Promise<WAMessage>;
     fetchImageUrl: (jid: string, sock: WASocket | undefined) => Promise<string | null | undefined>;
     fetchGroupMetadata: (jid: string, sock: WASocket | undefined) => Promise<GroupMetadata>;
     fetchMessageReceipts: ({ remoteJid, id }: WAMessageKey) => Promise<proto.IUserReceipt[] | null | undefined>;
@@ -84,16 +84,16 @@ declare const _default: (config: BaileysInMemoryStoreConfig) => {
         };
         messages: {
             [_: string]: {
-                array: proto.IWebMessageInfo[];
-                get: (id: string) => proto.IWebMessageInfo | undefined;
-                upsert: (item: proto.IWebMessageInfo, mode: "append" | "prepend") => void;
-                update: (item: proto.IWebMessageInfo) => boolean;
-                remove: (item: proto.IWebMessageInfo) => boolean;
-                updateAssign: (id: string, update: Partial<proto.IWebMessageInfo>) => boolean;
+                array: WAMessage[];
+                get: (id: string) => WAMessage | undefined;
+                upsert: (item: WAMessage, mode: "append" | "prepend") => void;
+                update: (item: WAMessage) => boolean;
+                remove: (item: WAMessage) => boolean;
+                updateAssign: (id: string, update: Partial<WAMessage>) => boolean;
                 clear: () => void;
-                filter: (contain: (item: proto.IWebMessageInfo) => boolean) => void;
-                toJSON: () => proto.IWebMessageInfo[];
-                fromJSON: (newItems: proto.IWebMessageInfo[]) => void;
+                filter: (contain: (item: WAMessage) => boolean) => void;
+                toJSON: () => WAMessage[];
+                fromJSON: (newItems: WAMessage[]) => void;
             };
         };
         labels: ObjectRepository<Label>;
@@ -105,7 +105,7 @@ declare const _default: (config: BaileysInMemoryStoreConfig) => {
             [id: string]: Contact;
         };
         messages: {
-            [id: string]: proto.IWebMessageInfo[];
+            [id: string]: WAMessage[];
         };
         labels: {
             [labelId: string]: Label;

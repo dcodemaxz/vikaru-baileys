@@ -1,4 +1,3 @@
-// baileys by denzy
 import WebSocket from 'ws';
 import { AbstractSocketClient } from './types';
 export declare class WebSocketClient extends AbstractSocketClient {
