@@ -52,6 +52,7 @@ This version includes several improvements, enhanced performance, and TypeScript
 
 | Feature                              | Description                                                |
 | ------------------------------------ | ---------------------------------------------------------- |
+| 🚫 **Anti-duplicate messages**     | Solution to overcome duplicate incoming message id        |
 | 💬 **Send Messages to Channels**     | Supports text & media messages to WhatsApp channels        |
 | 🔘 **Button & Interactive Messages** | Full interactive support for WhatsApp Messenger & Business |
 | 🖼️ **Send Album Messages**          | Send grouped media (album style) with caption support      |
@@ -84,18 +85,30 @@ npm install baileys@github:dcodemaxz/baileys
 
 ---
 
-## 🚀 Quick Example
+## 🚀 Quick Example (Anti-duplicate messages)
 
 ```ts
 import makeWASocket, { getSenderLid, toJid } from 'baileys'
 
 const sock = makeWASocket({ printQRInTerminal: true })
 
+// Duplicate message ( cached )
+const duplicateMsg = new Set();
+
 sock.ev.on('messages.upsert', ({ messages }) => {
     const msg = messages[0]
-    const info = getSenderLid(msg) //log
-    const jid = toJid(info.lid)
-    console.log('normalized jid:', jid)
+
+    // Stop execution if the same ID is detected
+    if (duplicateMsg.has(msg.key.id)) {
+      console.log(`[ Skip Duplicate-Id ] ▸ ${msg.key.participant || msg.key.remoteJid} | ${msg.key.id}`);
+      return;
+    };
+
+    // Save all ids to cached
+    duplicateMsg.add(msg.key.id);
+
+    // Delete saved id after 10 seconds
+    setTimeout(() => duplicateMsg.delete(msg.key.id), 10000);
 })
 ```
 
