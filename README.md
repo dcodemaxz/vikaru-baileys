@@ -25,6 +25,8 @@
 > This is a **custom `Baileys` build** by [dcodemaxz](https://github.com/dcodemaxz), based on [WhiskeySockets/Baileys](https://github.com/WhiskeySockets/Baileys).  
 This version includes several improvements, enhanced performance, and TypeScript compatibility.
 
+---
+
 > [!TIP]
 > 🔥 This Baileys is intended to `support` the [Vikaru-Bot](https://github.com/dcodemaxz/Vikaru-Bot) project
 
@@ -386,7 +388,7 @@ await vikaru.sendMessage(id, {
 
 ## 🪲 Reporting Issues
 
-> [!TIP]
+> [!NOTE]
 > If you find a `bug` or `need help`, please open an [issue](https://github.com/dcodemaxz/baileys/issues).
 
 <details>
