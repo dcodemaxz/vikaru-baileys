@@ -1,4 +1,4 @@
-# <div align="center">Baileys Modified</div>
+# <div align="center">`Baileys Modified`</div>
 
 <div align="center">
 
@@ -17,10 +17,10 @@
 
 ## 📝 Important Note
 
-This is a **custom Baileys build** by [dcodemaxz](https://github.com/dcodemaxz), based on [WhiskeySockets/Baileys](https://github.com/WhiskeySockets/Baileys).  
+This is a **custom `Baileys` build** by [dcodemaxz](https://github.com/dcodemaxz), based on [WhiskeySockets/Baileys](https://github.com/WhiskeySockets/Baileys).  
 This version includes several improvements, enhanced performance, and TypeScript compatibility.
 
-> 🔥 This Baileys is intended to support the [Vikaru-Bot](https://github.com/dcodemaxz/Vikaru-Bot) project
+> 🔥 This Baileys is intended to `support` the [Vikaru-Bot](https://github.com/dcodemaxz/Vikaru-Bot) project
 
 ---
 
@@ -47,7 +47,8 @@ This version includes several improvements, enhanced performance, and TypeScript
 | Feature                              | Description                                                |
 | ------------------------------------ | ---------------------------------------------------------- |
 | 🚫 **Anti-duplicate Response**       | Solution to overcome duplicate incoming message id         |
-| 🗞️ **Newsletter Management**         | Support for managing newsletters                           |
+| 🗞️ **Newsletter Management**         | Supported for managing newsletters                         |
+| 🗃️ **makeInMemoryStore**             | Supported `makeInMemoryStore` built in from baileys        |
 | 🔘 **Button & Interactive Messages** | Full interactive support for WhatsApp Messenger & Business |
 | 🖼️ **Send Album Messages**           | Send grouped media (album style) with caption support      |
 | 👥 **Group with JID Support**        | Enhanced support for `@jid` and `@lid` identifiers         |
@@ -55,7 +56,7 @@ This version includes several improvements, enhanced performance, and TypeScript
 | 🖼️ **Full-Size Profile Pictures**    | Upload HD profile pictures without cropping                |
 | 🔑 **Custom Pairing Codes**          | Generate and use your own pairing codes                    |
 | 📡 **Libsignal Fixes**               | Clean console logs and improved stability                  |
-| 🛠️ **Pairing/Qr Fixes**              | Fixed bug where WhatsApp cannot be linked (Pairing/Qr)     |
+| 🛠️ **Pairing/Qr Fixes**              | `Fixed bug` where WhatsApp cannot be linked (Pairing/Qr)     |
 | ⚙️ **Multi-file Auth Support**       | Built-in multi-file auth like official Baileys             |
 | 📈 **Optimized Performance**         | Rewritten modules for faster connection and retries        |
 
@@ -63,7 +64,7 @@ This version includes several improvements, enhanced performance, and TypeScript
 
 ## 📥 Installation
 
-Install in package.json:
+Install via `package.json`:
 
 ```bash
 "dependencies": {
@@ -72,7 +73,7 @@ Install in package.json:
 
 ```
 
-or install in terminal:
+Install via `terminal`:
 
 ```bash
 npm install baileys@github:dcodemaxz/baileys
@@ -82,6 +83,9 @@ npm install baileys@github:dcodemaxz/baileys
 
 
 ## 🚀 Quick Example (Anti-duplicate messages)
+
+A simple example of preventing duplicate executions due to `duplicate messages` from a WhatsApp message ID.
+This code caches the first message ID and then automatically ignores messages with the same ID (second, etc.), preventing the bot from executing the command twice. The cache is automatically cleared after reaching 10 IDs to keep it lightweight.
 
 ```ts
 // Duplicate message ( cached )
@@ -393,7 +397,7 @@ await vikaru.sendMessage(id, {
 
 ## 🪲 Reporting Issues
 
-If you find a bug or need help, please open an [issue](https://github.com/dcodemaxz/baileys/issues).
+If you find a `bug` or `need help`, please open an [issue](https://github.com/dcodemaxz/baileys/issues).
 
 <details>
 <summary>⚡ Developer</summary>
@@ -407,7 +411,7 @@ If you find a bug or need help, please open an [issue](https://github.com/dcodem
 
 ## ⚠️ Disclaimer
 
-This project is not affiliated with WhatsApp Inc.\
+This project is not affiliated with `WhatsApp Inc`.\
 Use it responsibly. Avoid spam, abuse, or illegal activity.
 
 <details>
