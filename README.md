@@ -17,9 +17,11 @@
 
 ## 📝 Important Note
 
-This is a **custom `Baileys` build** by [dcodemaxz](https://github.com/dcodemaxz), based on [WhiskeySockets/Baileys](https://github.com/WhiskeySockets/Baileys).  
+> [!IMPORTANT]
+> This is a **custom `Baileys` build** by [dcodemaxz](https://github.com/dcodemaxz), based on [WhiskeySockets/Baileys](https://github.com/WhiskeySockets/Baileys).  
 This version includes several improvements, enhanced performance, and TypeScript compatibility.
 
+> [!TIP]
 > 🔥 This Baileys is intended to `support` the [Vikaru-Bot](https://github.com/dcodemaxz/Vikaru-Bot) project
 
 ---
@@ -84,7 +86,8 @@ npm install baileys@github:dcodemaxz/baileys
 
 ## 🚀 Quick Example (Anti-duplicate messages)
 
-A simple example of preventing duplicate executions due to `duplicate messages` from a WhatsApp message ID.
+> [!TIP]
+> A simple example of preventing duplicate executions due to `duplicate messages` from a WhatsApp message ID.
 This code caches the first message ID and then automatically ignores messages with the same ID (second, etc.), preventing the bot from executing the command twice. The cache is automatically cleared after reaching 10 IDs to keep it lightweight.
 
 ```ts
@@ -397,7 +400,8 @@ await vikaru.sendMessage(id, {
 
 ## 🪲 Reporting Issues
 
-If you find a `bug` or `need help`, please open an [issue](https://github.com/dcodemaxz/baileys/issues).
+> [!TIP]
+> If you find a `bug` or `need help`, please open an [issue](https://github.com/dcodemaxz/baileys/issues).
 
 <details>
 <summary>⚡ Developer</summary>
@@ -411,7 +415,8 @@ If you find a `bug` or `need help`, please open an [issue](https://github.com/dc
 
 ## ⚠️ Disclaimer
 
-This project is not affiliated with `WhatsApp Inc`.\
+> [!CAUTION]
+> This project is not affiliated with `WhatsApp Inc`.\
 Use it responsibly. Avoid spam, abuse, or illegal activity.
 
 <details>
