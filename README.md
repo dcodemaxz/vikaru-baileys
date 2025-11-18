@@ -12,6 +12,10 @@
     <img src="https://img.shields.io/badge/WhatsApp-Comunity-25D366?logo=whatsapp&logoColor=white" alt="WhatsApp Comunity" />
   </a>
 
+![Stars](https://img.shields.io/github/stars/dcodemaxz/baileys)
+![Forks](https://img.shields.io/github/forks/dcodemaxz/baileys)
+![Issues](https://img.shields.io/github/issues/dcodemaxz/baileys)
+
 </div>
 
 
@@ -28,19 +32,19 @@ This version includes several improvements, enhanced performance, and TypeScript
 
 ## 📖 Table of Contents
 
-- [Important Note](#📝-important-note)
+- [Important Note](#-important-note)
 - [Added Features and Improvements](#✨-added-features-and-improvements)
-- [Installation](#📥-installation)
+- [Installation](#-installation)
 - [Anti Duplicate Id](#🚀-quick-example-anti-duplicate-messages)
 - [Advanced Usage (index.js)](#🧪-advanced-usage-indexjs)
-- [Feature Examples](#🧩-feature-examples)
+- [Feature Examples](#-feature-examples)
   - [Newsletter Management](#newsletter-management)
   - [AI Message Icon Customization](#ai-message-icon-customization)
   - [Send Album Message](#send-album-message)
   - [Button and Interactive Message Management](#button-and-interactive-message-management)
-- [Reporting Issues](#🪲-reporting-issues)
-- [Disclaimer](#⚠️-disclaimer)
-- [License](#📄-license)
+- [Reporting Issues](#-reporting-issues)
+- [Disclaimer](#-disclaimer)
+- [License](#-license)
 
 ---
 
@@ -400,7 +404,7 @@ await vikaru.sendMessage(id, {
 
 ## 🪲 Reporting Issues
 
-> [!NOTE]
+> [!TIP]
 > If you find a `bug` or `need help`, please open an [issue](https://github.com/dcodemaxz/baileys/issues).
 
 <details>
