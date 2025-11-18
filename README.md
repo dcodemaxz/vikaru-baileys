@@ -32,19 +32,19 @@ This version includes several improvements, enhanced performance, and TypeScript
 
 ## 📖 Table of Contents
 
-- [Important Note](#-important-note)
+- [Important Note](#📝-important-note)
 - [Added Features and Improvements](#✨-added-features-and-improvements)
-- [Installation](#-installation)
+- [Installation](#📥-installation)
 - [Anti Duplicate Id](#🚀-quick-example-anti-duplicate-messages)
 - [Advanced Usage (index.js)](#🧪-advanced-usage-indexjs)
-- [Feature Examples](#-feature-examples)
+- [Feature Examples](#🧩-feature-examples)
   - [Newsletter Management](#newsletter-management)
   - [AI Message Icon Customization](#ai-message-icon-customization)
   - [Send Album Message](#send-album-message)
   - [Button and Interactive Message Management](#button-and-interactive-message-management)
-- [Reporting Issues](#-reporting-issues)
-- [Disclaimer](#-disclaimer)
-- [License](#-license)
+- [Reporting Issues](#🪲-reporting-issues)
+- [Disclaimer](#⚠️-disclaimer)
+- [License](#📄-license)
 
 ---
 
