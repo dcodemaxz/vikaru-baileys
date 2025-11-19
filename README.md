@@ -18,7 +18,6 @@
 
 </div>
 
-
 ## 📝 Important Note
 
 > [!IMPORTANT]
@@ -27,12 +26,10 @@ This version includes several improvements, enhanced performance, and TypeScript
 
 ---
 
+## ✨ Added Features and Improvements
+
 > [!TIP]
 > 🔥 This Baileys is intended to `support` the [Vikaru-Bot](https://github.com/dcodemaxz/Vikaru-Bot) project
-
----
-
-## ✨ Added Features and Improvements
 
 | Feature                              | Description                                                |
 | ------------------------------------ | ---------------------------------------------------------- |
