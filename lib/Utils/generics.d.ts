@@ -1,21 +1,24 @@
+/// <reference types="node" />
 import { AxiosRequestConfig } from 'axios';
-import { ILogger } from './logger';
+import { Logger } from 'pino';
 import { proto } from '../../WAProto';
-import { VikaruEventEmitter, VikaruEventMap, BrowsersMap, WACallUpdateType, WAVersion } from '../Types';
+import { BaileysEventEmitter, BaileysEventMap, WACallUpdateType, WAVersion } from '../Types';
 import { BinaryNode } from '../WABinary';
-export declare const Browsers: BrowsersMap;
-export declare const getPlatformId: (browser: string) => any;
-export declare const BufferJSON: {
-    replacer: (k: any, value: any) => any;
-    reviver: (_: any, value: any) => any;
+export declare const Browsers: {
+    ubuntu: (browser: any) => [string, string, string];
+    macOS: (browser: any) => [string, string, string];
+    baileys: (browser: any) => [string, string, string];
+    windows: (browser: any) => [string, string, string];
+    /** The appropriate browser based on your OS & release */
+    appropriate: (browser: any) => [string, string, string];
 };
+export declare const getPlatformId: (browser: string) => any;
 export declare const getKeyAuthor: (key: proto.IMessageKey | undefined | null, meId?: string) => string;
-export declare const writeRandomPadMax16: (msg: Uint8Array) => Buffer<ArrayBuffer>;
-export declare const unpadRandomMax16: (e: Uint8Array | Buffer) => Uint8Array<ArrayBuffer>;
-export declare const encodeWAMessage: (message: proto.IMessage) => Buffer<ArrayBuffer>;
-export declare const encodeNewsletterMessage: (message: proto.IMessage) => Uint8Array<ArrayBufferLike>;
+export declare const writeRandomPadMax16: (msg: Uint8Array) => Buffer;
+export declare const unpadRandomMax16: (e: Uint8Array | Buffer) => Uint8Array;
+export declare const encodeWAMessage: (message: proto.IMessage) => Buffer;
 export declare const generateRegistrationId: () => number;
-export declare const encodeBigEndian: (e: number, t?: number) => Uint8Array<ArrayBuffer>;
+export declare const encodeBigEndian: (e: number, t?: number) => Uint8Array;
 export declare const toNumber: (t: Long | number | null | undefined) => number;
 /** unix timestamp of a date in seconds */
 export declare const unixTimestampSeconds: (date?: Date) => number;
@@ -34,14 +37,14 @@ export declare const delayCancellable: (ms: number) => {
 export declare function promiseTimeout<T>(ms: number | undefined, promise: (resolve: (v: T) => void, reject: (error: any) => void) => void): Promise<T>;
 export declare const generateMessageIDV2: (userId?: string) => string;
 export declare const generateMessageID: () => string;
-export declare function bindWaitForEvent<T extends keyof VikaruEventMap>(ev: VikaruEventEmitter, event: T): (check: (u: VikaruEventMap[T]) => Promise<boolean | undefined>, timeoutMs?: number) => Promise<void>;
-export declare const bindWaitForConnectionUpdate: (ev: VikaruEventEmitter) => (check: (u: Partial<import("../Types").ConnectionState>) => Promise<boolean | undefined>, timeoutMs?: number) => Promise<void>;
-export declare const printQRIfNecessaryListener: (ev: VikaruEventEmitter, logger: ILogger) => void;
+export declare function bindWaitForEvent<T extends keyof BaileysEventMap>(ev: BaileysEventEmitter, event: T): (check: (u: BaileysEventMap[T]) => boolean | undefined, timeoutMs?: number) => Promise<void>;
+export declare const bindWaitForConnectionUpdate: (ev: BaileysEventEmitter) => (check: (u: Partial<import("../Types").ConnectionState>) => boolean | undefined, timeoutMs?: number) => Promise<void>;
+export declare const printQRIfNecessaryListener: (ev: BaileysEventEmitter, logger: Logger) => void;
 /**
- * utility that fetches latest vikaru version from the master branch.
+ * utility that fetches latest baileys version from the master branch.
  * Use to ensure your WA connection is always on the latest version
  */
-export declare const fetchLatestVikaruVersion: (options?: AxiosRequestConfig<any>) => Promise<{
+export declare const fetchLatestBaileysVersion: (options?: AxiosRequestConfig<any>) => Promise<{
     version: WAVersion;
     isLatest: boolean;
     error?: undefined;
@@ -54,7 +57,7 @@ export declare const fetchLatestVikaruVersion: (options?: AxiosRequestConfig<any
  * A utility that fetches the latest web version of whatsapp.
  * Use to ensure your WA connection is always on the latest version
  */
-export declare const fetchLatestWaWebVersion: (options: AxiosRequestConfig<{}>) => Promise<{
+export declare const fetchLatestWaWebVersion: (options: AxiosRequestConfig<any>) => Promise<{
     version: WAVersion;
     isLatest: boolean;
     error?: undefined;
@@ -71,7 +74,7 @@ export declare const generateMdTagPrefix: () => string;
  */
 export declare const getStatusFromReceiptType: (type: string | undefined) => proto.WebMessageInfo.Status;
 /**
- * Stream errors generally provide a reason, map that to a vikaru DisconnectReason
+ * Stream errors generally provide a reason, map that to a baileys DisconnectReason
  * @param reason the string reason given, eg. "conflict"
  */
 export declare const getErrorCodeFromStreamError: (node: BinaryNode) => {
@@ -84,6 +87,6 @@ export declare const getCodeFromWSError: (error: Error) => number;
  * Is the given platform WA business
  * @param platform AuthenticationCreds.platform
  */
-export declare const isWABusinessPlatform: (platform: string) => platform is "smba" | "smbi";
+export declare const isWABusinessPlatform: (platform: string) => boolean;
 export declare function trimUndefined(obj: any): any;
 export declare function bytesToCrockford(buffer: Buffer): string;

@@ -1,5 +1,5 @@
-import { VikaruEventEmitter, VikaruEventMap } from '../Types';
-import { ILogger } from './logger';
+import { Logger } from 'pino';
+import { BaileysEventEmitter, BaileysEventMap } from '../Types';
 /**
  * A map that contains a list of all events that have been triggered
  *
@@ -7,10 +7,10 @@ import { ILogger } from './logger';
  * this can make processing events extremely efficient -- since everything
  * can be done in a single transaction
  */
-type VikaruEventData = Partial<VikaruEventMap>;
-type VikaruBufferableEventEmitter = VikaruEventEmitter & {
+type BaileysEventData = Partial<BaileysEventMap>;
+type BaileysBufferableEventEmitter = BaileysEventEmitter & {
     /** Use to process events in a batch */
-    process(handler: (events: VikaruEventData) => void | Promise<void>): (() => void);
+    process(handler: (events: BaileysEventData) => void | Promise<void>): (() => void);
     /**
      * starts buffering events, call flush() to release them
      * */
@@ -29,7 +29,7 @@ type VikaruBufferableEventEmitter = VikaruEventEmitter & {
 /**
  * The event buffer logically consolidates different events into a single event
  * making the data processing more efficient.
- * @param ev the vikaru event emitter
+ * @param ev the baileys event emitter
  */
-export declare const makeEventBuffer: (logger: ILogger) => VikaruBufferableEventEmitter;
+export declare const makeEventBuffer: (logger: Logger) => BaileysBufferableEventEmitter;
 export {};
