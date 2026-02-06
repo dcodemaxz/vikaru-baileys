@@ -55,7 +55,7 @@ Install via `package.json`:
 
 ```bash
 "dependencies": {
-    "baileys": "github:dcodemaxz/baileys"
+    "baileys": "github:dcodemaxz/vikaru-baileys"
 }
 
 ```
@@ -63,7 +63,7 @@ Install via `package.json`:
 Install via `terminal`:
 
 ```bash
-npm install baileys@github:dcodemaxz/baileys
+npm install baileys@github:dcodemaxz/vikaru-baileys
 ```
 
 ---
