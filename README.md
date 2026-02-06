@@ -1,4 +1,4 @@
-# <div align="center">`Baileys Modified`</div>
+# <div align="center">Baileys Modified</div>
 
 <div align="center">
 
