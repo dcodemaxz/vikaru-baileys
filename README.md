@@ -179,7 +179,7 @@ vikaru.ev.on("messages.upsert", ({ messages }) => {
     duplicateMsg.set(mek.key.id, true);
 
     // Command ( case / plugin )
-    console.log(mek.key.remoteJid, mek.message?.conversation)
+    // ...
 })
 ```
 
@@ -214,7 +214,7 @@ async function vikarustart() {
         const phoneNumber = "6289508899033"
         const customCode = "MAXZBAIL";
         const code = await vikaru.requestPairingCode(phoneNumber, customCode);
-        console.log(`Your Pairing Code: ${code?.match(/.{1,4}/g)?.join("-") || code}`);
+        console.log(`Pairing Code : ${code?.match(/.{1,4}/g)?.join("-") || code}`);
     }
 
     // Save credentials after connecting
@@ -286,8 +286,18 @@ async function vikarustart() {
         // Save the incoming id
         duplicateMsg.set(mek.key.id, true);
 
-        // Command ( case / plugin )
-        console.log(mek.key.remoteJid, mek.message?.conversation)
+        // Simple command
+        const text = mek.message.conversation
+        if (text?.startsWith(["/", "#", "!"])) {
+            const command = text.substring(1).split(" ")[0]
+            
+            if (command === "ping") {
+                await vikaru.sendMessage(mek.key.remoteJid, 
+                    { text: "Pong! 🏓" }, 
+                    { quoted: mek }
+                )
+            }
+        }
     })
 
 // ------------------------------------------------------------------- //
@@ -862,75 +872,6 @@ vikaru.ev.on('contacts.upsert', (contacts) => {
 
 // Credentials
 vikaru.ev.on('creds.update', saveCreds)
-```
-
----
-
-### 💾 Full Example with Store & Events
-
-```ts
-const {
-    default: makeWASocket,
-    useMultiFileAuthState,
-    makeInMemoryStore,
-    DisconnectReason
-} = require("baileys")
-const pino = require("pino")
-const fs = require("fs")
-
-const store = makeInMemoryStore({ logger: pino({ level: 'warn' }) })
-
-async function start() {
-    const { state, saveCreds } = await useMultiFileAuthState("./session/")
-    
-    const vikaru = makeWASocket({
-        auth: state,
-        browser: ["Ubuntu", "Chrome", "20.0.04"],
-        logger: pino({ level: 'warn' }),
-        cachedGroupMetadata: async (jid) => store.groupMetadata?.[jid]
-    })
-    
-    store.bind(vikaru.ev)
-    
-    vikaru.ev.on('connection.update', async (update) => {
-        const { connection, lastDisconnect } = update
-        
-        if (connection === "open") {
-            console.log(`✅ Connected as ${vikaru.user.id}`)
-        } else if (connection === "close") {
-            const reason = new Boom(lastDisconnect?.error)?.output.statusCode
-            if (reason === DisconnectReason.loggedOut) {
-                console.log("Logged out")
-                process.exit(1)
-            } else {
-                start()
-            }
-        }
-    })
-    
-    vikaru.ev.on("messages.upsert", async ({ messages }) => {
-        const msg = messages[0]
-        if (!msg.message) return
-        
-        const text = msg.message.conversation
-        
-        // Simple command handler
-        if (text?.startsWith("!")) {
-            const command = text.substring(1).split(" ")[0]
-            
-            if (command === "ping") {
-                await vikaru.sendMessage(msg.key.remoteJid, 
-                    { text: "Pong! 🏓" }, 
-                    { quoted: msg }
-                )
-            }
-        }
-    })
-    
-    vikaru.ev.on('creds.update', saveCreds)
-}
-
-start()
 ```
 
 </details>
