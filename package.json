@@ -1,6 +1,6 @@
 {
   "name": "vikaru-baileys",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "WhatsApp Web API Library",
   "keywords": [
     "vikaru",
@@ -10,11 +10,13 @@
     "whatsapp-web",
     "whatsapp-bot",
     "automation",
-    "multi-device"
+    "multi-device",
+    "communities",
+    "advanced-features"
   ],
-  "homepage": "https://github.com/dcodemaxz/baileys",
+  "homepage": "https://github.com/dcodemaxz/vikaru-baileys",
   "repository": {
-    "url": "https://github.com/dcodemaxz/baileys"
+    "url": "https://github.com/dcodemaxz/vikaru-baileys"
   },
   "license": "MIT",
   "author": "dcodemaxz",

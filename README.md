@@ -1,20 +1,20 @@
-# <div align="center">Baileys Modified</div>
+# <div align="center">Vikaru Super Baileys</div>
 
 <div align="center">
 
   <img src="https://raw.githubusercontent.com/dcodemaxz/Vikaru-Bot/refs/heads/main/media/image.png" />
 
-  <a href="https://github.com/dcodemaxz/baileys">
-    <img src="https://img.shields.io/github/package-json/v/dcodemaxz/baileys?color=red&label=Version&logo=github" alt="GitHub version" />
+  <a href="https://github.com/dcodemaxz/vikaru-baileys">
+    <img src="https://img.shields.io/github/package-json/v/dcodemaxz/vikaru-baileys?color=red&label=Version&logo=github" alt="GitHub version" />
   </a>
 
   <a href="https://chat.whatsapp.com/GlNdk54lm9V7C4U54SXnh1">
     <img src="https://img.shields.io/badge/WhatsApp-Comunity-25D366?logo=whatsapp&logoColor=white" alt="WhatsApp Comunity" />
   </a>
 
-![Stars](https://img.shields.io/github/stars/dcodemaxz/baileys)
-![Forks](https://img.shields.io/github/forks/dcodemaxz/baileys)
-![Issues](https://img.shields.io/github/issues/dcodemaxz/baileys)
+![Stars](https://img.shields.io/github/stars/dcodemaxz/vikaru-baileys)
+![Forks](https://img.shields.io/github/forks/dcodemaxz/vikaru-baileys)
+![Issues](https://img.shields.io/github/issues/dcodemaxz/vikaru-baileys)
 
 </div>
 
@@ -32,20 +32,33 @@ This version includes several improvements, enhanced performance, and TypeScript
 > 🔥 This Baileys is intended to `support` the [Vikaru-Bot](https://github.com/dcodemaxz/Vikaru-Bot) project
 
 | Feature                              | Description                                                |
-| ------------------------------------ | ---------------------------------------------------------- |
+| ------------------------------------ |--------| ---------------------------------------------------------- |
 | 🚫 **Anti-duplicate Response**       | Solution to overcome duplicate incoming message id         |
-| 🗞️ **Newsletter Management**         | Supported for managing newsletters                         |
+| 🗞️ **Newsletter Management**         | Full newsletter support including create, follow, metadata |
 | 🗃️ **makeInMemoryStore**             | Supported `makeInMemoryStore` built in from baileys        |
 | 🔘 **Button & Interactive Messages** | Full interactive support for WhatsApp Messenger & Business |
 | 🖼️ **Send Album Messages**           | Send grouped media (album style) with caption support      |
-| 👥 **Group with JID Support**        | Enhanced support for `@jid` and `@lid` identifiers         |
+| 👥 **Group with JID/LID Support**    | Enhanced support for `@jid` and `@lid` identifiers         |
 | 🤖 **AI Message Icon**               | Add AI-styled icons to your bot replies                    |
 | 🖼️ **Full-Size Profile Pictures**    | Upload HD profile pictures without cropping                |
 | 🔑 **Custom Pairing Codes**          | Generate and use your own pairing codes                    |
 | 📡 **Libsignal Fixes**               | Clean console logs and improved stability                  |
-| 🛠️ **Pairing/Qr Fixes**              | `Fixed bug` where WhatsApp cannot be linked (Pairing/Qr)     |
+| 🛠️ **Pairing/Qr Fixes**              | `Fixed bugs` where WhatsApp cannot be linked (Pairing/Qr)  |
 | ⚙️ **Multi-file Auth Support**       | Built-in multi-file auth like official Baileys             |
 | 📈 **Optimized Performance**         | Rewritten modules for faster connection and retries        |
+| 🏷️ **Label Group Management**        | Set labels for group members                               |
+| ⏱️ **Delay Function**                | Built-in delay/sleep function                              |
+| ❤️ **React Messages**                | React to messages with emojis                              |
+| ✏️ **Edit Messages**                 | Edit sent messages                                         |
+| 🚫 **Check Banned Numbers**          | Check if a number is banned                                |
+| 📺 **Channel ID Checker**            | Get channel metadata from URL                              |
+| 📢 **Multiple Newsletter Follow**    | Follow multiple newsletters at once                        |
+| 🌊 **Audio Waveform**                | Automatic waveform generation for audio messages           |
+| 📊 **Group Status Messages**         | Send status messages to groups                             |
+| 📅 **Event Messages**                | Create and send event invitations                          |
+| 🗳️ **Poll Result Messages**          | Display poll results                                       |
+| 🔧 **Advanced Handlers**             | Enhanced message handling                                  |
+| 🖼️ **Media Utilities**               | Resize, convert, compress, sticker functions               |
 
 ---
 
@@ -386,7 +399,7 @@ await vikaru.sendMessage(id, {
 ## 🪲 Reporting Issues
 
 > [!NOTE]
-> If you find a `bug` or `need help`, please open an [issue](https://github.com/dcodemaxz/baileys/issues).
+> If you find a `bug` or `need help`, please open an [issue](https://github.com/dcodemaxz/vikaru-baileys/issues).
 
 <details>
 <summary>⚡ Developer</summary>
