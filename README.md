@@ -1,4 +1,4 @@
-# <div align="center">Vikaru Super Baileys</div>
+# <div align="center">Vikaru Baileys</div>
 
 <div align="center">
 
