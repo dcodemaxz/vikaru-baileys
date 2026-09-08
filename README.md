@@ -35,12 +35,15 @@ This version includes several improvements, enhanced performance, and TypeScript
 | Feature                              | Description                                                |
 | ------------------------------------ | ---------------------------------------------------------- |
 | 💬 **Send Messages**                 | Send text, media, documents, and more with rich formatting |
+| 🧱 **Message Builder**               | Send JSON, buttons, lists, carousels, vCards, and broadcasts |
 | ✏️ **Edit Messages**                 | Edit sent messages after delivery                          |
 | 🗑️ **Delete Messages**               | Delete messages from your side or for everyone             |
 | ❤️ **React Messages**                | React to messages with emojis (add/remove reactions)       |
 | 📌 **Pin Messages**                  | Pin important messages in chats or groups                  |
 | 📍 **Keep Messages**                 | Mark messages as kept/important for later reference        |
 | 🗳️ **Poll Messages**                 | Create and send interactive poll messages                  |
+| 🎯 **Action Polls**                  | Map selected poll options to custom actions                |
+| 🔁 **Forward Messages**               | Forward existing messages with preserved metadata          |
 | 🤖 **AI Message Icon**               | Add AI-styled icons to bot messages (biz_bot marker)       |
 
 ### Media & Upload
@@ -48,6 +51,7 @@ This version includes several improvements, enhanced performance, and TypeScript
 | ------------------------------------ | ---------------------------------------------------------- |
 | 🖼️ **Send Album Messages**           | Send grouped media (album style) with captions             |
 | 🎨 **Media Utilities**               | Resize, convert, compress, and sticker creation           |
+| 🏷️ **Sticker Metadata**              | Create static or animated WebP stickers with pack metadata |
 | 🌊 **Audio Waveform**                | Automatic waveform generation for audio messages           |
 | 📤 **Media Upload**                  | Optimized media upload to WhatsApp servers                 |
 | 📥 **Media Download**                | Download and save media from messages                      |
@@ -74,6 +78,7 @@ This version includes several improvements, enhanced performance, and TypeScript
 | 👥 **JID/LID Support**               | Full support for `@jid` and `@lid` group identifiers       |
 | 📱 **Ephemeral Messages**            | Auto-delete messages in groups (24h, 7d, 90d)             |
 | 📊 **Group Status Messages**         | Send status updates visible only in groups                 |
+| 📣 **Status Mentions**               | Publish status updates that notify selected contacts       |
 | 📅 **Event Invitations**             | Create and send event invitation messages                  |
 
 ### Newsletter Management
@@ -105,6 +110,7 @@ This version includes several improvements, enhanced performance, and TypeScript
 | 📊 **Privacy Settings**              | Fetch and manage privacy settings (read receipts, etc)     |
 | 🚪 **Logout**                        | Safely logout and end the session                          |
 | ⚙️ **Multi-file Auth Support**       | Built-in multi-file auth like official Baileys            |
+| 🗄️ **SQLite Auth Support**            | Store credentials and keys in a transactional SQLite file  |
 
 ### Channels & Discovery
 | Feature                              | Description                                                |
@@ -122,6 +128,8 @@ This version includes several improvements, enhanced performance, and TypeScript
 | 🔄 **Device Sync (USync)**           | Latest device protocol with USync query improvements       |
 | ⏱️ **Delay Function**                | Built-in async delay/sleep function                        |
 | 🔧 **Advanced Handlers**             | Enhanced message and event handling                        |
+| 🧩 **GraphQL Integration**            | Execute WhatsApp WWW, Facebook, and Wamo GraphQL queries  |
+| 🌉 **Interop Support**                | Discover, resolve, and manage interoperable contacts      |
 
 ### Protocol & Compatibility
 | Feature                              | Description                                                |
@@ -130,6 +138,7 @@ This version includes several improvements, enhanced performance, and TypeScript
 | 🏢 **Business Features**             | Business account and catalog support                       |
 | 📡 **Multi-Device (MD) Support**     | Full multi-device protocol compliance                      |
 | 🔐 **E2E Encryption**                | End-to-end encryption with Signal protocol                 |
+| 🔒 **Privacy & Device Tools**         | Manage privacy settings, trusted devices, and profiles    |
 
 ---
 
@@ -139,7 +148,7 @@ Install via `package.json`:
 
 ```bash
 "dependencies": {
-    "baileys": "github:dcodemaxz/vikaru-baileys"
+    "baileys": "https://github.com/dcodemaxz/vikaru-baileys"
 }
 
 ```
@@ -387,6 +396,78 @@ await vikaru.sendMessage(chatId, {
         selectableCount: 1
     }
 })
+```
+
+---
+
+### 🎯 Action Polls & Message Builder
+
+```ts
+// Map the selected option to an action in your bot
+const poll = await vikaru.sendActionPoll(chatId, "Choose an action", [
+    { vote: "Profile", action: "profile" },
+    { vote: "Help", action: "help" }
+])
+
+// Resolve the action after receiving the poll update
+const action = vikaru.resolvePollAction(poll.key.id, "Help")
+
+// Send native buttons, a list, or a carousel
+await vikaru.sendButtonsMessage(chatId, {
+    text: "Choose an option",
+    buttons: [{ id: "confirm", text: "Confirm" }]
+})
+
+await vikaru.sendListMessage(chatId, {
+    text: "Select a product",
+    sections: [{ title: "Products", rows: [{ title: "Product A", id: "product_a" }] }]
+})
+
+await vikaru.sendVCard(chatId, {
+    name: "Vikaru Support",
+    phone: "6289508899033"
+})
+```
+
+Use `sendCarouselMessage`, `sendRichResponse`, `forwardMessage`, and `broadcastMessage` for additional message formats.
+
+---
+
+### 🗄️ SQLite Auth State
+
+> [!NOTE]
+> `useSqliteAuthState` requires Node.js 22.5+ with the built-in `node:sqlite` module.
+
+```ts
+const { state, saveCreds, close } = await useSqliteAuthState("./session/auth.db", {
+    migrateFromFolder: "./session/"
+})
+
+const vikaru = makeWASocket({ auth: state })
+vikaru.ev.on("creds.update", saveCreds)
+
+// Close the SQLite connection when the process exits
+process.on("SIGINT", () => {
+    close()
+    process.exit(0)
+})
+```
+
+---
+
+### 🏷️ Sticker Utilities
+
+> [!NOTE]
+> Sticker conversion requires `ffmpeg` to be available in the system `PATH`.
+
+```ts
+const sticker = await makeSticker(imageBuffer, {
+    pack: "Vikaru",
+    author: "dcodemaxz",
+    emojis: ["🔥"]
+})
+
+await vikaru.sendMessage(chatId, { sticker })
 ```
 
 ---
