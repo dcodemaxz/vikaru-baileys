@@ -1,7 +1,7 @@
 {
   "name": "vikaru-baileys",
   "type": "module",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "A WebSockets library for interacting with WhatsApp Web",
   "keywords": [
     "vikaru",
