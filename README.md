@@ -528,6 +528,68 @@ await vikaru.sendMessage(chatId, {
 
 ---
 
+### PN/LID and Username Lookup
+
+These socket helpers use WhatsApp USync to look up phone-number JIDs (`@s.whatsapp.net`), LID JIDs (`@lid`), and usernames. A lookup can return `null` when no mapping is available.
+
+```ts
+// Convert one LID to its phone-number JID (or null)
+const pnJid = await vikaru.toPn('123456789@lid')
+
+// Convert multiple LIDs; batch calls return mapping objects
+const pnMappings = await vikaru.toPn([
+    '123456789@lid',
+    '987654321@lid'
+])
+// [{ lid: '123456789@lid', pn: '628123456789@s.whatsapp.net' }, ...]
+
+// Explicit mapping helper; always returns mapping objects
+const mappings = await vikaru.toPnMappings('123456789@lid')
+
+// Convert one phone-number JID to its LID (or null)
+const lid = await vikaru.toLid('628123456789@s.whatsapp.net')
+
+// Batch PN-to-LID lookup; returns { pn, lid } objects
+const lidMappings = await vikaru.toLID([
+    '628123456789@s.whatsapp.net',
+    '628987654321@s.whatsapp.net'
+])
+
+// Look up one or more WhatsApp usernames; the result is always an array
+const users = await vikaru.fetchUsername(['username_one', 'username_two'])
+// [{ username, pn, lid }, ...]
+```
+
+There is no `toJid` helper. Use `toPn(lid)` to convert an LID JID to its phone-number JID, or `toLid(pn)` for the reverse lookup.
+
+---
+
+### Contoh Relay
+
+Gunakan `invisible: true` pada chat pribadi untuk mengirim pesan ke penerima tanpa menyinkronkan salinannya ke perangkat lain milik akun pengirim.
+
+**Conversation**
+
+```ts
+await sock.relayMessage(
+  jid,
+  { conversation: 'Hello' },
+  { invisible: true }
+)
+```
+
+**Extended Text**
+
+```ts
+await sock.relayMessage(
+  jid,
+  { extendedTextMessage: { text: 'Hello' } },
+  { invisible: true }
+)
+```
+
+---
+
 ### 🎫 Button Messages (Interactive)
 
 ```ts
@@ -743,6 +805,7 @@ await vikaru.newsletterReactMessage("123456789@newsletter", "175", "🥳")
 
 // Get newsletter metadata
 const metadata = await vikaru.newsletterMetadata("invite", "code_here")
+// Includes convenient fields such as metadata.name and the full response at metadata.raw
 
 // Subscribe to newsletter live updates
 await vikaru.subscribeNewsletterUpdates("123456789@newsletter")
